@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Математический Квест</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <div class="score-badge" id="scoreDisplay">0 ⭐</div>
+
+      <!-- ЭКРАН 1: Главное меню -->
+      <div id="screen-home" class="screen">
+        <div class="hero-title">Математический<br />Квест 🚀</div>
+        <p>Прокачай свой мозг!</p>
+
+        <div id="continue-box" class="hidden continue-box">
+          <button
+            class="btn-success btn-animated"
+            id="btnContinue"
+            onclick="startGame(true)"
+          >
+            ▶️ Продолжить
+          </button>
+        </div>
+
+        <button
+          class="btn-primary"
+          onclick="startGame(false)"
+          style="margin-top: 20px"
+        >
+          Начать заново
+        </button>
+
+        <div
+          style="
+            margin-top: 30px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+          "
+        >
+          <button
+            class="btn-outline"
+            onclick="showReport()"
+            style="font-size: 14px"
+          >
+            Мои результаты
+          </button>
+        </div>
+      </div>
+
+      <!-- ЭКРАН 2: Карта Глав -->
+      <div id="screen-chapters" class="screen hidden">
+        <h2>Выбери Главу</h2>
+        <div class="chapters-list" id="chaptersList"></div>
+        <button class="btn-outline" onclick="goHome()" style="margin-top: 20px">
+          В главное меню
+        </button>
+      </div>
+
+      <!-- ЭКРАН 3: Список уровней -->
+      <div id="screen-levels" class="screen hidden">
+        <h2 id="chapterTitle">Глава</h2>
+        <div class="levels-grid" id="levelsGrid"></div>
+        <button
+          class="btn-outline"
+          onclick="goToChapters()"
+          style="margin-top: 20px"
+        >
+          Назад к главам
+        </button>
+      </div>
+
+      <!-- ЭКРАН 4: Теория -->
+      <div id="screen-theory" class="screen hidden">
+        <h2 id="theoryTitle">Обучение</h2>
+        <div class="theory-content" id="theoryContent"></div>
+        <button
+          class="btn-primary btn-animated"
+          onclick="startTheoryTasks()"
+          style="margin-top: 20px"
+        >
+          Понятно, начать!
+        </button>
+        <button
+          class="btn-outline"
+          onclick="goToChapters()"
+          style="margin-top: 10px; font-size: 14px; padding: 10px"
+        >
+          Назад
+        </button>
+      </div>
+
+      <!-- ЭКРАН ПОЗДРАВЛЕНИЯ -->
+      <div id="screen-congrats" class="screen hidden">
+        <div class="congrats-icon">🏆</div>
+        <h2 class="congrats-title">Уровень пройден!</h2>
+        <p class="congrats-text">Ты отлично справилась! Так держать.</p>
+        <button
+          class="btn-success btn-animated"
+          onclick="goToChapters()"
+          style="margin-top: 20px"
+        >
+          Продолжить →
+        </button>
+      </div>
+
+      <!-- ЭКРАН 5: Игра -->
+      <div id="screen-game" class="screen hidden">
+        <div class="progress-container">
+          <div class="progress-bar" id="gameProgress"></div>
+        </div>
+
+        <div class="task-title" id="taskTitle">Уровень</div>
+
+        <div class="task-container">
+          <div id="floatingMeme" class="floating-meme hidden">🎉</div>
+          <div class="task-card" id="taskContent">Вопрос</div>
+        </div>
+
+        <input
+          type="number"
+          id="answerInput"
+          placeholder="Ответ"
+          autocomplete="off"
+        />
+
+        <div class="feedback" id="feedbackBox"></div>
+
+        <button class="btn-primary" id="checkBtn" onclick="checkAnswer()">
+          Проверить
+        </button>
+        <button
+          class="btn-outline"
+          onclick="quitLevel()"
+          style="margin-top: 10px; font-size: 14px; padding: 10px"
+        >
+          Выйти
+        </button>
+      </div>
+
+      <!-- Экран результатов -->
+      <div id="screen-report" class="screen hidden">
+        <h2>Твои результаты</h2>
+        <div
+          id="reportText"
+          style="
+            font-size: 16px;
+            line-height: 1.6;
+            margin: 20px 0;
+            text-align: left;
+          "
+        ></div>
+        <button class="btn-primary" onclick="goHome()">Назад</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
